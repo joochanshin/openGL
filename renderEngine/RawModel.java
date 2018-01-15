@@ -9,7 +9,7 @@ public class RawModel {
 		this.vertexCount = vertexCount;
 	}
 	
-	public int getVAOID(){
+	public int getVaoID(){
 		return vaoID;
 	}
 	
