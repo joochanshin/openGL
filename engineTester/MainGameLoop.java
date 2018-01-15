@@ -4,6 +4,7 @@ import org.lwjgl.opengl.Display;
 
 import renderEngine.*;
 import renderEngine.Loader;
+import shaders.StaticShader;
 
 public class MainGameLoop {
 
@@ -13,6 +14,7 @@ public class MainGameLoop {
 		
 		Loader loader = new Loader();
 		Renderer renderer = new Renderer();
+		StaticShader shader = new StaticShader();
 		
 		// OpenGL expects vertices to be defined counter clockwise by default
 		float[] vertices = {
@@ -35,10 +37,13 @@ public class MainGameLoop {
 		while(!Display.isCloseRequested()){
 			renderer.prepare();
 			// game logic
+			shader.start();
 			renderer.render(model);
+			shader.stop();
 			DisplayManager.updateDisplay();
 		}
 		
+		shader.cleanUp();
 		loader.cleanUp();
 		DisplayManager.closeDisplay();
 	}
