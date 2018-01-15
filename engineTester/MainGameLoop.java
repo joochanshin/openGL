@@ -25,8 +25,12 @@ public class MainGameLoop {
 				0.5f, 0.5f, 0f,
 				-0.5f, 0.5f, 0f
 		};
+		int[] indices = {
+				0, 1, 3,	// Top left triangle (VO, V1, V3)
+				3, 1, 2 	// Bottom right triangle (V3, V1, V2)
+		};
 		
-		RawModel model = loader.loadToVao(vertices);
+		RawModel model = loader.loadToVao(vertices, indices);
 		
 		while(!Display.isCloseRequested()){
 			renderer.prepare();
